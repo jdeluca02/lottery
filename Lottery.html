@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title> Mass Lottery </title>
+</head>
+
+<body>
+    <script> 
+    var i = 0;
+    var lotNumbers = [];
+    for(i = 0; i < 5; i++){
+        n = Math.ceil(Math.random() * 48);
+        lotNumbers = lotNumbers.concat(n);
+        }
+    var luckyNum = Math.ceil(Math.random() * 18);
+    
+    var picks = prompt("Pick 5 numbers between 1 and 48", "1 1 1 1 1");
+    var luckyPick = prompt("Pick a lucky number between 1 and 18", "1");
+        
+    luckyPick = parseInt(luckyPick);
+    
+    var sort = picks.split(' ').map(function(item) {
+        return parseInt(item, 10);
+    });
+        
+    lotNumbers.sort(function(a, b){return a-b});
+        
+    sort.sort(function(a, b){return a-b});
+    
+    var count = 0;
+    for(x in sort){
+        if(lotNumbers.includes(x,0)){
+            count++; 
+        }
+    }
+    
+    var luckCount = 0;
+    if(luckyPick == luckyNum){
+        luckCount = 1;
+    }
+        
+    document.write("The winning lottery numbers are: " + lotNumbers + "," + luckyNum);
+        
+    document.write("<br>Your lottery picks are: " + sort + "," + luckyPick);
+        
+    if(count == 5 && luckCount == 1){
+        document.write("<br>You matched all 5 numbers and the Lucky Ball Number! Congrats!<br>Your Prize is: $7,000 a WEEK for LIFE!");
+    }else if(count == 5 && luckCount == 0){
+        document.write("<br>You matched all 5 numbers! Congrats!<br>Your Prize is: $25,000 a YEAR for LIFE");
+    }else if(count == 4 && luckCount == 1){
+        document.write("<br>You matched 4 numbers and the Lucky Ball Number! Congrats!<br>Your Prize is: $5,000!");
+    }else if(count == 4 && luckCount == 0){
+        document.write("<br>You matched 4 numbers! Congrats!<br>Your Prize is: $200!");
+    }else if(count == 3 && luckCount == 1){
+        document.write("<br>You matched 3 numbers and the Lucky Ball Number! Congrats!<br>Your Prize is: $150!");
+    }else if(count == 3 && luckCount == 0){
+        document.write("<br>You matched 3 numbers! Congrats!<br>Your Prize is: $20!");
+    }else if(count == 2 && luckCount == 1){
+        document.write("<br>You matched 2 numbers and the Lucky Ball Number! Congrats!<br>Your Prize is: $25!");
+    }else if(count == 2 && luckCount == 0){
+        document.write("<br>You matched 2 numbers! Congrats!<br>Your Prize is: $3!");
+    }else if(count == 1 && luckCount == 1){
+        document.write("<br>You matched 1 number and the Lucky Ball Number! Congrats!<br>Your Prize is: $6!");
+    }else if(count == 0 && luckCount == 1){
+        document.write("<br>You matched Lucky Ball Number! Congrats!<br>Your Prize is: $4!");
+    }else{
+       document.write("<br>Sorry. You do not receive a prize."); 
+    }
+        
+        
+    </script>
+</body>        
+
+</html>
